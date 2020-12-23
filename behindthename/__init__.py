@@ -111,7 +111,7 @@ class RandomName(Request):
       gender=gender,
       number=number,
       surname=surname,
-      usage=usage
+      usage=usage,
       **kwargs)
     self.url = self.slug + 'random.json'
     self.validate()
