@@ -8,7 +8,7 @@ with open('requirements.txt', 'r') as f:
 
 setuptools.setup(
   name='behindthename',
-  version='0.1.1',
+  version='0.1.2',
   author='James Murphy',
   author_email='james.frank.murphy@protonmail.com',
   description='A simple API wrapper for behindthename.com',
