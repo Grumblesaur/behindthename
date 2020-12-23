@@ -101,7 +101,7 @@ fntsx:xalaxxi
 
 def load():
   usages = {}
-  for line in usages_text:
+  for line in usages_text.splitlines():
     if not line.strip():
       continue
     nametypes = list(map(lambda s: s.strip(), line.split(':')))
