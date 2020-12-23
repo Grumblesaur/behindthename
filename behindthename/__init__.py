@@ -75,13 +75,13 @@ class NameLookup(Request):
 
 
 class RelatedName(Request):
-  def __init__(self, api_key=None, gender=None, name=None, usage=None, **kwargs)):
+  def __init__(self, api_key=None, gender=None, name=None, usage=None, **kw):
     super().__init__(
       api_key=api_key,
       name=name,
       usage=usage,
       gender=gender,
-      **kwargs)
+      **kw)
     
     self.url = self.slug + 'related.json'
     self.validate()
