@@ -5,7 +5,7 @@ from behindthename import exceptions
 class Request(object):
   Genders = {'f', 'm', 'u', 'both'}
   Usages = usages.load()
-  def __init__(self, api_key=None, exact=None, gender=None, name=None, number=None, surname=None, usage=None):
+  def __init__(self, api_key=None, exact=None, gender=None, name=None, number=None, surname=None, usage=None, **kwargs):
     self.slug = 'https://www.behindthename.com/api/'
     self.key = api_key
     self.gender = gender
@@ -54,8 +54,8 @@ class Request(object):
 
 
 class NameLookup(Request):
-  def __init__(self, api_key=None, name=None, exact=False):
-    super().__init__(api_key, name=name, exact=exact)
+  def __init__(self, api_key=None, name=None, exact=False, **kwargs):
+    super().__init__(api_key, name=name, exact=exact, **kwargs)
     self.url = self.slug + 'lookup.json'
     self.validate()
   
@@ -75,8 +75,14 @@ class NameLookup(Request):
 
 
 class RelatedName(Request):
-  def __init__(self, api_key=None, gender=None, name=None, usage=None):
-    super().__init__(api_key=api_key, name=name, usage=usage, gender=gender)
+  def __init__(self, api_key=None, gender=None, name=None, usage=None, **kwargs)):
+    super().__init__(
+      api_key=api_key,
+      name=name,
+      usage=usage,
+      gender=gender,
+      **kwargs)
+    
     self.url = self.slug + 'related.json'
     self.validate()
     
@@ -99,8 +105,14 @@ class RelatedName(Request):
 
 
 class RandomName(Request):
-  def __init__(self, api_key=None, gender='both', number=2, surname=True, usage='all'):
-    super().__init__(api_key=api_key, gender=gender, number=number, surname=surname, usage=usage)
+  def __init__(self, api_key=None, gender='both', number=2, surname=True, usage='all', **kwargs):
+    super().__init__(
+      api_key=api_key,
+      gender=gender,
+      number=number,
+      surname=surname,
+      usage=usage
+      **kwargs)
     self.url = self.slug + 'random.json'
     self.validate()
   
